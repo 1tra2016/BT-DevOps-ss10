@@ -1,0 +1,20 @@
+sudo -i
+adduser deploy
+usermod -aG sudo deploy
+
+apt update
+apt install -y ca-certificates curl
+apt install -y docker.io docker-compose-v2
+
+systemctl enable --now docker
+usermod -aG docker deploy
+
+id deploy
+su - deploy
+
+whoami
+groups
+docker --version
+docker compose version
+
+docker run hello-world
